@@ -1,0 +1,38 @@
+<template>
+  <div id="hello">
+      <div class="color" on-click="getUser">Hello {{msg}}</div>
+  </div>
+</template>
+
+<script>
+  import userApi from '../api/userApi'
+
+  export default {
+    initData () {
+      return {
+        msg: '靖哥哥'
+      }
+    },
+    getUser:function(){
+      userApi.getById(1).then(response => {
+        if(response.success){
+          console.log(response.data);
+        }
+      })
+    }
+  }
+</script>
+
+<style>
+  .color {
+    width: fit-content;
+    font-size: 80px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: linear-gradient(to right, deeppink, dodgerblue); 
+    -webkit-background-clip: text; 
+    color: transparent;
+  }
+</style>
